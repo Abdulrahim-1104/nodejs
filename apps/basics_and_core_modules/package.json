@@ -1,0 +1,22 @@
+{
+  "name": "@nodejs/basic_and_core_modules",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "01": "tsx src/01_process.object.ts rahim 22",
+    "02": "tsx src/02_crypto_modules.ts",
+    "03": "tsx src/03_os_module.ts",
+    "04": "tsx src/04_path_module.ts",
+    "05": "tsx src/05_timer_module.ts",
+    "06": "tsx src/06_fs_module.ts",
+    "07": "tsx src/07_buffer.ts",
+    "08": "tsx src/08_url_object.ts",
+    "09": "tsx src/09_event_emitter.ts",
+    "10": "tsx src/10_stream.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

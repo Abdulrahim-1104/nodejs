@@ -1,0 +1,17 @@
+{
+  "name": "@nodejs/http_module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "01": "tsx watch src/01-http-basics.ts",
+    "02": "tsx watch src/02-http-routing.ts",
+    "03": "tsx watch src/03_request_body_json.ts",
+    "04": "tsx watch src/04_http_json_response.ts",
+    "05": "tsx watch src/05_external_api_and_abortcontroller.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

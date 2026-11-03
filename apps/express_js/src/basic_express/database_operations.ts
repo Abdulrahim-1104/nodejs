@@ -217,4 +217,96 @@ export const db = knex({
 
 const products = await db("products").select("*").where("price", ">", 50000);
 
-console.log(products);
+// console.log(products);
+
+// using could storage
+import "dotenv/config";
+
+export const could_db = knex({
+  client: "pg",
+
+  connection: {
+    host: process.env.DB_HOST,
+    port: Number(process.env.DB_PORT),
+    database: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
+} as any);
+
+async function testCloudConnection() {
+  try {
+    const result = await could_db.raw("SELECT version(), NOW()");
+
+    console.log("Connected to Supabase!");
+    console.log(result.rows);
+  } catch (error) {
+    console.error("Database connection failed:", error);
+  } finally {
+    await could_db.destroy();
+  }
+}
+
+testCloudConnection();
+
+async function createProductsTable() {
+  const exists = await could_db.schema.hasTable("products");
+
+  if (exists) {
+    console.log("Products table already exists");
+    return;
+  }
+
+  await db.schema.createTable("products", (table) => {
+    table.increments("id").primary();
+
+    table.string("name", 150).notNullable();
+    table.decimal("price", 10, 2).notNullable();
+    table.integer("stock").notNullable().defaultTo(0);
+    table.string("category", 100).notNullable();
+
+    table.timestamp("created_at").defaultTo(could_db.fn.now());
+  });
+
+  console.log("Products table created!");
+}
+
+async function insertProducts() {
+  const products = [
+    {
+      name: "MacBook Air M4",
+      price: 999.99,
+      stock: 10,
+      category: "Electronics",
+    },
+    {
+      name: "Mechanical Keyboard",
+      price: 89.99,
+      stock: 25,
+      category: "Accessories",
+    },
+    {
+      name: "Gaming Mouse",
+      price: 49.99,
+      stock: 30,
+      category: "Accessories",
+    },
+  ];
+
+  const insertedProducts = await could_db("products")
+    .insert(products)
+    .returning("*");
+
+  console.log("Inserted products:", insertedProducts);
+}
+async function getCloudProducts() {
+  const products = await could_db("products").select("*");
+
+  console.log("All products:", products);
+}
+// createProductsTable();
+// insertProducts();
+// getCloudProducts();

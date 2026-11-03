@@ -1,0 +1,26 @@
+{
+  "name": "express_excercise",
+  "version": "1.0.0",
+  "description": "practicing express js",
+  "main": "server.ts",
+  "author": "Abdul Rahim",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx watch src/basic_express/basic_express.ts"
+  },
+  "dependencies": {
+    "@types/cookie-parser": "^1.4.10",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0",
+    "pino": "^10.4.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

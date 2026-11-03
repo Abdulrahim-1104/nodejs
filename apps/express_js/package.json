@@ -8,18 +8,30 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "tsx watch src/basic_express/basic_express.ts"
+    "01": "tsx watch src/basic_express/basic_express.ts",
+    "02": "tsx watch src/basic_express/database_operations.ts",
+    "postinstall": "prisma skills sync || exit 0"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
     "@types/cookie-parser": "^1.4.10",
+    "@types/pg": "^8.23.1",
     "cookie-parser": "^1.4.7",
+    "dotenv": "^18.0.9",
     "express": "^5.3.0",
+    "knex": "^3.3.0",
+    "pg": "^8.23.1",
     "pino": "^10.4.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^1.1.2",
     "zod": "^4.6.7"
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "prisma": "^7.10.0",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
   }

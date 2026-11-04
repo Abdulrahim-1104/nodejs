@@ -1,0 +1,45 @@
+{
+  "name": "local_auth",
+  "version": "1.0.0",
+  "description": "Authentication learning via local email and password",
+  "main": "server.ts",
+  "author": "Abdul Rahim",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "tsx watch src/server.ts",
+    "migration:create": "node-pg-migrate create",
+    "migration:up": "dotenv -e .env -- node-pg-migrate up --database-url-var APP_DATABASE_URL",
+    "migration:down": "dotenv -e .env -- node-pg-migrate down --database-url-var APP_DATABASE_URL",
+    "migration:redo": "dotenv -e .env -- node-pg-migrate redo --database-url-var APP_DATABASE_URL",
+    "migration:status": "dotenv -e .env -- node-pg-migrate status --database-url-var APP_DATABASE_URL",
+    "migration:dry": "dotenv -e .env -- node-pg-migrate up --dry-run --database-url-var APP_DATABASE_URL"
+  },
+  "dependencies": {
+    "argon2": "^0.45.2",
+    "connect-pg-simple": "^10.0.0",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "express-rate-limit": "^8.7.3",
+    "express-session": "^1.19.0",
+    "helmet": "^8.3.0",
+    "jose": "^6.2.15",
+    "pg": "^8.23.1",
+    "pino": "^10.4.0",
+    "pino-http": "^11.0.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/connect-pg-simple": "^7.0.3",
+    "@types/express": "^5.0.6",
+    "@types/express-session": "^1.19.0",
+    "@types/node": "^26.6.6",
+    "@types/pg": "^8.23.1",
+    "dotenv-cli": "^11.1.0",
+    "node-pg-migrate": "^9.0.0",
+    "pino-pretty": "^13.2.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

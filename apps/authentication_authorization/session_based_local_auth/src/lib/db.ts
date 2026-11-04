@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Pool } from "../../node_modules/@types/pg";
+import { Pool } from "pg";
 import { CONFIG } from "../config/env.config";
 
 export const pool = new Pool({

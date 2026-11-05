@@ -10,6 +10,10 @@ import { ROUTES } from "../router";
 import { loginSchema, registerSchema } from "../validation/auth.validation";
 import { validateBody } from "../middleware/validator.middleware";
 import { verifyAuth } from "../middleware/auth.middleware";
+import {
+  googleCallback,
+  googleLogin,
+} from "../../../oauth_based_authentication/src/service/auth.service";
 
 const authRouter = Router();
 
@@ -30,4 +34,5 @@ authRouter.get(ROUTES.AUTH.AUTH_VERIFY_ME, verifyAuth, verifyMe);
 authRouter.get(ROUTES.AUTH.AUTH_GET_ME, verifyAuth, getMe);
 
 authRouter.post(ROUTES.AUTH.AUTH_LOGOUT, verifyAuth, logoutUser);
+
 export default authRouter;
